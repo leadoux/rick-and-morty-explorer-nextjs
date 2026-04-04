@@ -11,6 +11,17 @@ A Next.js (App Router) + TypeScript project that demonstrates:
 
 Live app: [https://rm-nextjs.leadoux.dev](https://rm-nextjs.leadoux.dev)
 
+## Stack
+
+- **Framework:** Next.js 16 (App Router) + React 19
+- **Language:** TypeScript
+- **Data layer:** GraphQL over `fetch` with centralized query documents
+- **Client caching:** IndexedDB via `idb` with TTL and stale fallback behavior
+- **State management:** Lightweight client stores with React context/providers
+- **Testing:** Vitest (unit) and Cypress (smoke e2e)
+- **Package manager:** pnpm
+- **Hosting/deployment:** Netlify (production from `main`, preview deploys for PRs)
+
 ## Feature Map
 
 - **Global search** across characters, episodes, and locations.
