@@ -4,6 +4,7 @@ import { graphqlRequest } from "@/lib/graphql/client";
 import { CHARACTERS_QUERY } from "@/lib/queries";
 import type { CharactersQueryResult } from "@/types/graphql";
 import { CharacterCard } from "@/components/characters/CharacterCard";
+import { CharacterFilters } from "@/components/characters/CharacterFilters";
 import { EmptyState } from "@/components/states/EmptyState";
 import { ErrorState } from "@/components/states/ErrorState";
 import { PaginationControls } from "@/components/listing/PaginationControls";
@@ -69,6 +70,12 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
   return (
     <section className="section">
       <h1>Characters</h1>
+      <CharacterFilters
+        name={filters.name ?? ""}
+        status={filters.status ?? ""}
+        species={filters.species ?? ""}
+        gender={filters.gender ?? ""}
+      />
       <p className="muted">Showing {items.length} of {info.count} characters.</p>
       <div className="card-grid">
         {items.map((character) => (
