@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { Character } from "@/types/entities";
 
 type CharacterCardProps = {
@@ -18,6 +19,15 @@ export function CharacterCard({ character }: CharacterCardProps) {
           {character.status} - {character.species}
         </p>
         <p className="muted">Gender: {character.gender}</p>
+        <FavoriteButton
+          item={{
+            id: character.id,
+            kind: "character",
+            name: character.name,
+            subtitle: `${character.status} - ${character.species}`,
+            image: character.image,
+          }}
+        />
       </div>
     </article>
   );

@@ -210,11 +210,18 @@ a {
   border-radius: 0.45rem;
   padding: 0.4rem 0.7rem;
   background: var(--surface);
+  color: var(--foreground);
+  cursor: pointer;
 }
 
 .button--disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.button--accent {
+  border-color: #22c55e;
+  color: #22c55e;
 }
 
 .error-text {
@@ -252,6 +259,13 @@ a {
   gap: 0.25rem;
 }
 
+.favorites-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
 .muted {
   color: var(--muted);
 }
@@ -278,6 +292,10 @@ a {
   }
 
   .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorites-grid {
     grid-template-columns: 1fr;
   }
 }

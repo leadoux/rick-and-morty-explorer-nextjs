@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { CharacterDetailQueryResult } from "@/types/graphql";
 
 type CharacterDetailProps = {
@@ -15,6 +16,15 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
         <p className="muted">
           {character.status} - {character.species}
         </p>
+        <FavoriteButton
+          item={{
+            id: character.id,
+            kind: "character",
+            name: character.name,
+            subtitle: `${character.status} - ${character.species}`,
+            image: character.image,
+          }}
+        />
         <p className="muted">Gender: {character.gender}</p>
         {character.type ? <p className="muted">Type: {character.type}</p> : null}
 

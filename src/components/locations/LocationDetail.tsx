@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { LocationDetailQueryResult } from "@/types/graphql";
 
 type LocationDetailProps = {
@@ -11,6 +12,14 @@ export function LocationDetail({ location }: LocationDetailProps) {
       <div className="detail-card__body">
         <h1>{location.name}</h1>
         <p className="muted">Type: {location.type || "Unknown"}</p>
+        <FavoriteButton
+          item={{
+            id: location.id,
+            kind: "location",
+            name: location.name,
+            subtitle: `${location.type || "Unknown"} - ${location.dimension || "Unknown"}`,
+          }}
+        />
         <p className="muted">Dimension: {location.dimension || "Unknown"}</p>
         <section>
           <h2>Residents</h2>
