@@ -21,7 +21,7 @@ export function NavLinks() {
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`nav-link ${item.activePatterns.some((p) => pathname.startsWith(p)) ? "nav-link--active" : ""}`}
+              className={`nav-link ${item.activePatterns.some((p) => pathname === p || pathname.startsWith(p + "/")) ? "nav-link--active" : ""}`}
             >
               {item.label}
             </Link>
