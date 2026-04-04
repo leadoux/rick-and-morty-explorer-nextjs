@@ -36,4 +36,6 @@ pnpm dev
 ```sh
 pnpm lint
 pnpm build
+pnpm test:unit:run
+pnpm test:e2e
 ```
