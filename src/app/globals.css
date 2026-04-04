@@ -1,10 +1,19 @@
 :root {
+  --background: #f9fafb;
+  --surface: #ffffff;
+  --surface-muted: #e5e7eb;
+  --foreground: #111827;
+  --muted: #4b5563;
+  --accent: #06b6d4;
+  --border: #d1d5db;
+}
+
+html[data-theme="dark"] {
   --background: #111827;
   --surface: #1f2937;
   --surface-muted: #374151;
   --foreground: #f9fafb;
   --muted: #9ca3af;
-  --accent: #06b6d4;
   --border: #4b5563;
 }
 

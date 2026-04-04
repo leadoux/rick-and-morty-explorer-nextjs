@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { GlobalSearch } from "@/components/search/GlobalSearch";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function AppHeader() {
   return (
@@ -11,6 +12,7 @@ export function AppHeader() {
         </Link>
         <div className="header-tools">
           <GlobalSearch />
+          <ThemeToggle />
           <NavLinks />
         </div>
       </div>

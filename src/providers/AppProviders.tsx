@@ -2,6 +2,7 @@
 
 import { FavoritesProvider } from "@/store/favoritesStore";
 import { CompareProvider } from "@/store/compareStore";
+import { PreferencesProvider } from "@/store/preferencesStore";
 
 type AppProvidersProps = {
   children: React.ReactNode;
@@ -9,8 +10,10 @@ type AppProvidersProps = {
 
 export function AppProviders({ children }: AppProvidersProps) {
   return (
-    <FavoritesProvider>
-      <CompareProvider>{children}</CompareProvider>
-    </FavoritesProvider>
+    <PreferencesProvider>
+      <FavoritesProvider>
+        <CompareProvider>{children}</CompareProvider>
+      </FavoritesProvider>
+    </PreferencesProvider>
   );
 }
