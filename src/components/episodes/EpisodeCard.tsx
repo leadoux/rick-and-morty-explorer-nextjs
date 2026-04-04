@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CompareToggle } from "@/components/compare/CompareToggle";
 import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { Episode } from "@/types/entities";
 
@@ -21,6 +22,15 @@ export function EpisodeCard({ episode }: EpisodeCardProps) {
             kind: "episode",
             name: episode.name,
             subtitle: `${episode.episode} - ${episode.air_date}`,
+          }}
+        />
+        <CompareToggle
+          type="episode"
+          value={{
+            id: episode.id,
+            name: episode.name,
+            episode: episode.episode,
+            air_date: episode.air_date,
           }}
         />
       </div>

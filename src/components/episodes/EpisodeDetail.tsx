@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CompareToggle } from "@/components/compare/CompareToggle";
 import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { EpisodeDetailQueryResult } from "@/types/graphql";
 
@@ -18,6 +19,15 @@ export function EpisodeDetail({ episode }: EpisodeDetailProps) {
             kind: "episode",
             name: episode.name,
             subtitle: `${episode.episode} - ${episode.air_date}`,
+          }}
+        />
+        <CompareToggle
+          type="episode"
+          value={{
+            id: episode.id,
+            name: episode.name,
+            episode: episode.episode,
+            air_date: episode.air_date,
           }}
         />
         <p className="muted">Air date: {episode.air_date}</p>

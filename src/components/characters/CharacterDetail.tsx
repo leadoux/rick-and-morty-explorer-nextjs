@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CompareToggle } from "@/components/compare/CompareToggle";
 import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { CharacterDetailQueryResult } from "@/types/graphql";
 
@@ -23,6 +24,16 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
             name: character.name,
             subtitle: `${character.status} - ${character.species}`,
             image: character.image,
+          }}
+        />
+        <CompareToggle
+          type="character"
+          value={{
+            id: character.id,
+            name: character.name,
+            image: character.image,
+            status: character.status,
+            species: character.species,
           }}
         />
         <p className="muted">Gender: {character.gender}</p>

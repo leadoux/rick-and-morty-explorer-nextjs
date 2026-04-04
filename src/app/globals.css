@@ -266,6 +266,18 @@ a {
   gap: 0.8rem;
 }
 
+.compare-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.compare-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
 .muted {
   color: var(--muted);
 }
@@ -296,6 +308,10 @@ a {
   }
 
   .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-columns {
     grid-template-columns: 1fr;
   }
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CompareToggle } from "@/components/compare/CompareToggle";
 import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 import type { Character } from "@/types/entities";
 
@@ -26,6 +27,16 @@ export function CharacterCard({ character }: CharacterCardProps) {
             name: character.name,
             subtitle: `${character.status} - ${character.species}`,
             image: character.image,
+          }}
+        />
+        <CompareToggle
+          type="character"
+          value={{
+            id: character.id,
+            name: character.name,
+            image: character.image,
+            status: character.status,
+            species: character.species,
           }}
         />
       </div>
