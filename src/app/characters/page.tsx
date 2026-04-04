@@ -1,33 +1,89 @@
 import { getErrorMessage } from "@/lib/errors";
+import { parseCharacterFilters, toCharacterQueryParams } from "@/lib/filters/characterFilters";
 import { graphqlRequest } from "@/lib/graphql/client";
 import { CHARACTERS_QUERY } from "@/lib/queries";
 import type { CharactersQueryResult } from "@/types/graphql";
+import { CharacterCard } from "@/components/characters/CharacterCard";
+import { EmptyState } from "@/components/states/EmptyState";
+import { ErrorState } from "@/components/states/ErrorState";
+import { PaginationControls } from "@/components/listing/PaginationControls";
 
-async function fetchCharactersCount() {
+type CharactersPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+async function fetchCharacters(searchParams: Record<string, string | string[] | undefined>) {
+  const filters = parseCharacterFilters(searchParams);
   const data = await graphqlRequest<CharactersQueryResult>(CHARACTERS_QUERY, {
-    page: 1,
+    page: filters.page,
+    filter: {
+      name: filters.name,
+      status: filters.status,
+      species: filters.species,
+      gender: filters.gender,
+    },
   });
-  return data.characters?.info.count ?? 0;
+
+  return {
+    filters,
+    items: data.characters?.results ?? [],
+    info: data.characters?.info ?? {
+      count: 0,
+      pages: 1,
+      next: null,
+      prev: null,
+    },
+  };
 }
 
-export default async function CharactersPage() {
-  let count = 0;
+export default async function CharactersPage({ searchParams }: CharactersPageProps) {
+  let pageData: Awaited<ReturnType<typeof fetchCharacters>> | null = null;
   let error = "";
 
   try {
-    count = await fetchCharactersCount();
+    pageData = await fetchCharacters(await searchParams);
   } catch (unknownError) {
     error = getErrorMessage(unknownError);
   }
 
+  if (error) {
+    return (
+      <section className="section">
+        <h1>Characters</h1>
+        <ErrorState message={error} />
+      </section>
+    );
+  }
+
+  if (!pageData || pageData.items.length === 0) {
+    return (
+      <section className="section">
+        <h1>Characters</h1>
+        <EmptyState message="No characters matched your current filters." />
+      </section>
+    );
+  }
+
+  const { filters, items, info } = pageData;
+
   return (
     <section className="section">
       <h1>Characters</h1>
-      {error ? (
-        <p className="muted">Data source is initializing: {error}</p>
-      ) : (
-        <p className="muted">Loaded catalog metadata: {count} characters available.</p>
-      )}
+      <p className="muted">Showing {items.length} of {info.count} characters.</p>
+      <div className="card-grid">
+        {items.map((character) => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </div>
+      <PaginationControls
+        currentPage={filters.page}
+        totalPages={info.pages || 1}
+        buildHref={(page) => {
+          const params = toCharacterQueryParams({ ...filters, page });
+          const query = params.toString();
+          return query ? `/characters?${query}` : "/characters";
+        }}
+      />
     </section>
   );
 }
