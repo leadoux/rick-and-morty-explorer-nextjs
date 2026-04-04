@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { GLOBAL_SEARCH_QUERY } from "@/lib/queries";
 import { useDebouncedValue } from "@/hooks/useDebouncedValue";
+import { createCachedGraphqlFetch } from "@/lib/graphqlCache";
 
 type SearchResult = {
   id: string;
@@ -21,6 +22,7 @@ type SearchPayload = {
 };
 
 const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_URL ?? "https://rickandmortyapi.com/graphql";
+const cachedFetch = createCachedGraphqlFetch();
 
 export function GlobalSearch() {
   const [value, setValue] = useState("");
@@ -41,7 +43,7 @@ export function GlobalSearch() {
     async function run() {
       setIsLoading(true);
       try {
-        const response = await fetch(endpoint, {
+        const response = await cachedFetch(endpoint, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({
