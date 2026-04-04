@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { NavLinks } from "@/components/layout/NavLinks";
+import { GlobalSearch } from "@/components/search/GlobalSearch";
 
 export function AppHeader() {
   return (
@@ -8,7 +9,10 @@ export function AppHeader() {
         <Link href="/characters" className="app-brand">
           Rick and Morty Explorer
         </Link>
-        <NavLinks />
+        <div className="header-tools">
+          <GlobalSearch />
+          <NavLinks />
+        </div>
       </div>
     </header>
   );
