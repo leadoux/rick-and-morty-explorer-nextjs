@@ -10,11 +10,11 @@ export function AppHeader() {
         <Link href="/characters" className="app-brand">
           Rick and Morty Explorer
         </Link>
-        <div className="header-tools">
+        <div className="header-main">
           <GlobalSearch />
-          <ThemeToggle />
           <NavLinks />
         </div>
+        <ThemeToggle />
       </div>
     </header>
   );
