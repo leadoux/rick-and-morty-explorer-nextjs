@@ -1,6 +1,7 @@
 "use client";
 
 import { useFavoritesStore } from "@/store/favoritesStore";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import type { FavoriteItem } from "@/types/favorites";
 
 type FavoriteButtonProps = {
@@ -9,7 +10,8 @@ type FavoriteButtonProps = {
 
 export function FavoriteButton({ item }: FavoriteButtonProps) {
   const { isFavorite, toggleFavorite } = useFavoritesStore();
-  const active = isFavorite(item.id, item.kind);
+  const hydrated = useIsHydrated();
+  const active = hydrated ? isFavorite(item.id, item.kind) : false;
 
   return (
     <button
@@ -17,7 +19,7 @@ export function FavoriteButton({ item }: FavoriteButtonProps) {
       className={`button ${active ? "button--accent" : ""}`}
       onClick={() => toggleFavorite(item)}
     >
-      {active ? "Favorited" : "Add Favorite"}
+      {hydrated ? (active ? "Favorited" : "Add Favorite") : "Favorite"}
     </button>
   );
 }

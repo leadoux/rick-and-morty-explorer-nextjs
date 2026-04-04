@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useIsHydrated } from "@/hooks/useIsHydrated";
 import { useFavoritesStore } from "@/store/favoritesStore";
 
 export function FavoritesView() {
   const { items } = useFavoritesStore();
+  const hydrated = useIsHydrated();
+
+  if (!hydrated) {
+    return <p className="muted">Loading favorites...</p>;
+  }
 
   const characters = items.filter((item) => item.kind === "character");
   const episodes = items.filter((item) => item.kind === "episode");
