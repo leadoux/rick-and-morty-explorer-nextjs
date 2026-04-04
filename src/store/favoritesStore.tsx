@@ -21,6 +21,19 @@ function keyFor(id: string, kind: FavoriteItem["kind"]) {
   return `${kind}:${id}`;
 }
 
+export function toggleFavoritesList(currentItems: FavoriteItem[], item: FavoriteItem) {
+  const index = currentItems.findIndex(
+    (existing) => keyFor(existing.id, existing.kind) === keyFor(item.id, item.kind),
+  );
+  if (index > -1) {
+    const nextItems = [...currentItems];
+    nextItems.splice(index, 1);
+    return nextItems;
+  }
+
+  return [item, ...currentItems];
+}
+
 export function FavoritesProvider({ children }: FavoritesProviderProps) {
   const [items, setItems] = useState<FavoriteItem[]>(() => {
     if (typeof window === "undefined") return [];
@@ -44,18 +57,7 @@ export function FavoritesProvider({ children }: FavoritesProviderProps) {
       items,
       isFavorite: (id, kind) => items.some((item) => keyFor(item.id, item.kind) === keyFor(id, kind)),
       toggleFavorite: (item) => {
-        setItems((currentItems) => {
-          const index = currentItems.findIndex(
-            (existing) => keyFor(existing.id, existing.kind) === keyFor(item.id, item.kind),
-          );
-          if (index > -1) {
-            const nextItems = [...currentItems];
-            nextItems.splice(index, 1);
-            return nextItems;
-          }
-
-          return [item, ...currentItems];
-        });
+        setItems((currentItems) => toggleFavoritesList(currentItems, item));
       },
     }),
     [items],

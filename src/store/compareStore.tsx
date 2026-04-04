@@ -32,6 +32,21 @@ type CompareProviderProps = {
   children: React.ReactNode;
 };
 
+export function toggleComparisonList<T extends { id: string }>(current: T[], value: T) {
+  const index = current.findIndex((item) => item.id === value.id);
+  if (index > -1) {
+    const next = [...current];
+    next.splice(index, 1);
+    return next;
+  }
+
+  if (current.length === 2) {
+    return [current[1], value];
+  }
+
+  return [...current, value];
+}
+
 export function CompareProvider({ children }: CompareProviderProps) {
   const [characters, setCharacters] = useState<CompareCharacter[]>([]);
   const [episodes, setEpisodes] = useState<CompareEpisode[]>([]);
@@ -41,36 +56,10 @@ export function CompareProvider({ children }: CompareProviderProps) {
       characters,
       episodes,
       toggleCharacter: (value) => {
-        setCharacters((current) => {
-          const index = current.findIndex((item) => item.id === value.id);
-          if (index > -1) {
-            const next = [...current];
-            next.splice(index, 1);
-            return next;
-          }
-
-          if (current.length === 2) {
-            return [current[1], value];
-          }
-
-          return [...current, value];
-        });
+        setCharacters((current) => toggleComparisonList(current, value));
       },
       toggleEpisode: (value) => {
-        setEpisodes((current) => {
-          const index = current.findIndex((item) => item.id === value.id);
-          if (index > -1) {
-            const next = [...current];
-            next.splice(index, 1);
-            return next;
-          }
-
-          if (current.length === 2) {
-            return [current[1], value];
-          }
-
-          return [...current, value];
-        });
+        setEpisodes((current) => toggleComparisonList(current, value));
       },
       hasCharacter: (id) => characters.some((item) => item.id === id),
       hasEpisode: (id) => episodes.some((item) => item.id === id),
