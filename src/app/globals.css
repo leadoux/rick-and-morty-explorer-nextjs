@@ -169,6 +169,37 @@ a {
   color: #f87171;
 }
 
+.detail-card {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.detail-image {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.detail-card__body {
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.detail-card__body h2 {
+  font-size: 1rem;
+}
+
+.link-list {
+  list-style: none;
+  display: grid;
+  gap: 0.25rem;
+}
+
 .muted {
   color: var(--muted);
 }
