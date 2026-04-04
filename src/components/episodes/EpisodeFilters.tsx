@@ -17,14 +17,6 @@ export function EpisodeFilters({ name, season }: EpisodeFiltersProps) {
   const { updateFilter } = useUrlSyncedFilters({ debounceKeys: ["name", "season"] });
 
   useEffect(() => {
-    setNameInput(name);
-  }, [name]);
-
-  useEffect(() => {
-    setSeasonInput(season);
-  }, [season]);
-
-  useEffect(() => {
     if (debouncedName === name) return;
     updateFilter("name", debouncedName);
   }, [debouncedName, name, updateFilter]);

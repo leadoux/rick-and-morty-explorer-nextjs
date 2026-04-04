@@ -17,10 +17,6 @@ export function CharacterFilters({ name, status, species, gender }: CharacterFil
   const { updateFilter } = useUrlSyncedFilters({ debounceKeys: ["name"] });
 
   useEffect(() => {
-    setNameInput(name);
-  }, [name]);
-
-  useEffect(() => {
     if (debouncedName === name) return;
     updateFilter("name", debouncedName);
   }, [debouncedName, name, updateFilter]);

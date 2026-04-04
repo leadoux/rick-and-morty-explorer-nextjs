@@ -71,6 +71,7 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
     <section className="section">
       <h1>Characters</h1>
       <CharacterFilters
+        key={`name:${filters.name ?? ""}|status:${filters.status ?? ""}|species:${filters.species ?? ""}|gender:${filters.gender ?? ""}`}
         name={filters.name ?? ""}
         status={filters.status ?? ""}
         species={filters.species ?? ""}

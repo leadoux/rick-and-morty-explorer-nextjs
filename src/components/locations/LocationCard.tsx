@@ -1,0 +1,20 @@
+import Link from "next/link";
+import type { Location } from "@/types/entities";
+
+type LocationCardProps = {
+  location: Location;
+};
+
+export function LocationCard({ location }: LocationCardProps) {
+  return (
+    <article className="card">
+      <div className="card__body">
+        <h3>
+          <Link href={`/location/${location.id}`}>{location.name}</Link>
+        </h3>
+        <p className="muted">Type: {location.type || "Unknown"}</p>
+        <p className="muted">Dimension: {location.dimension || "Unknown"}</p>
+      </div>
+    </article>
+  );
+}

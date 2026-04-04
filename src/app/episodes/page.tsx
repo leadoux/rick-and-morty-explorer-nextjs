@@ -68,7 +68,11 @@ export default async function EpisodesPage({ searchParams }: EpisodesPageProps) 
   return (
     <section className="section">
       <h1>Episodes</h1>
-      <EpisodeFilters name={filters.name ?? ""} season={filters.season ?? ""} />
+      <EpisodeFilters
+        key={`name:${filters.name ?? ""}|season:${filters.season ?? ""}`}
+        name={filters.name ?? ""}
+        season={filters.season ?? ""}
+      />
       <p className="muted">Showing {items.length} of {info.count} episodes.</p>
       <div className="card-grid">
         {items.map((episode) => (
