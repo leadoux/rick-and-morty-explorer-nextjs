@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/characters", label: "Characters" },
-  { href: "/episodes", label: "Episodes" },
-  { href: "/locations", label: "Locations" },
-  { href: "/favorites", label: "Favorites" },
-  { href: "/compare", label: "Compare" },
+  { href: "/characters", label: "Characters", activePatterns: ["/characters", "/character"] },
+  { href: "/episodes", label: "Episodes", activePatterns: ["/episodes", "/episode"] },
+  { href: "/locations", label: "Locations", activePatterns: ["/locations", "/location"] },
+  { href: "/favorites", label: "Favorites", activePatterns: ["/favorites"] },
+  { href: "/compare", label: "Compare", activePatterns: ["/compare"] },
 ];
 
 export function NavLinks() {
@@ -21,7 +21,7 @@ export function NavLinks() {
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`nav-link ${pathname.startsWith(item.href) ? "nav-link--active" : ""}`}
+              className={`nav-link ${item.activePatterns.some((p) => pathname === p || pathname.startsWith(p + "/")) ? "nav-link--active" : ""}`}
             >
               {item.label}
             </Link>
