@@ -238,6 +238,15 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.filter-fieldset {
+  border: 0 !important;
+  box-shadow: none;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
 .field {
   display: grid;
   gap: 0.3rem;
