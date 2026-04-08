@@ -5,6 +5,8 @@
   --foreground: #111827;
   --muted: #4b5563;
   --accent: #06b6d4;
+  --accent-soft: #dbe9fb;
+  --accent-soft-text: #0c376b;
   --border: #d1d5db;
 }
 
@@ -14,6 +16,8 @@ html[data-theme="dark"] {
   --surface-muted: #374151;
   --foreground: #f9fafb;
   --muted: #9ca3af;
+  --accent-soft: #1f3149;
+  --accent-soft-text: #dcecff;
   --border: #4b5563;
 }
 
@@ -312,6 +316,17 @@ a {
 .button--accent {
   border-color: #22c55e;
   color: #22c55e;
+}
+
+.theme-toggle {
+  white-space: nowrap;
+  border: none;
+  border-radius: 0.55rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  background: var(--accent-soft);
+  color: var(--accent-soft-text);
 }
 
 .card-actions {
