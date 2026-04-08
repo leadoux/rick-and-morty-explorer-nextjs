@@ -285,10 +285,75 @@ a {
 }
 
 .pagination {
-  margin-top: 1.25rem;
-  display: flex;
-  gap: 0.75rem;
+  margin-top: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d9dde3;
+  border-radius: 0.75rem;
+  background: #f3f4f6;
+}
+
+.pagination > :first-child {
+  justify-self: start;
+}
+
+.pagination > :last-child {
+  justify-self: end;
+}
+
+.pagination__status {
+  justify-self: center;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+  color: #5b6575;
+}
+
+.pagination .button {
+  min-width: 4.25rem;
+  border-radius: 0.5rem;
+  padding: 0.34rem 0.75rem;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.pagination .button--secondary {
+  background: #edf3ff;
+  color: #46689e;
+  border-color: #d8e5ff;
+}
+
+.pagination .button--disabled {
+  background: #eceef1;
+  color: #a1a8b3;
+  border-color: #d9dde3;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .pagination {
+  border-color: #374151;
+  background: #1f2937;
+}
+
+html[data-theme="dark"] .pagination__status {
+  color: #c4ccd7;
+}
+
+html[data-theme="dark"] .pagination .button--secondary {
+  background: #27364d;
+  color: #d8e8ff;
+  border-color: #304763;
+}
+
+html[data-theme="dark"] .pagination .button--disabled {
+  background: #27313f;
+  color: #8b95a6;
+  border-color: #374151;
 }
 
 .button {
