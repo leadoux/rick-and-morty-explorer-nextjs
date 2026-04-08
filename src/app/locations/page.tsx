@@ -49,7 +49,9 @@ export default async function LocationsPage({ searchParams }: LocationsPageProps
   if (error) {
     return (
       <section className="section">
-        <h1>Locations</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          Locations
+        </h1>
         <ErrorState message={error} />
       </section>
     );
@@ -58,7 +60,9 @@ export default async function LocationsPage({ searchParams }: LocationsPageProps
   if (!pageData || pageData.items.length === 0) {
     return (
       <section className="section">
-        <h1>Locations</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          Locations
+        </h1>
         <EmptyState message="No locations matched your current filters." />
       </section>
     );
@@ -68,7 +72,9 @@ export default async function LocationsPage({ searchParams }: LocationsPageProps
 
   return (
     <section className="section">
-      <h1>Locations</h1>
+      <h1 data-page-heading tabIndex={-1}>
+        Locations
+      </h1>
       <LocationFilters
         key={`name:${filters.name ?? ""}|type:${filters.type ?? ""}|dimension:${filters.dimension ?? ""}`}
         name={filters.name ?? ""}

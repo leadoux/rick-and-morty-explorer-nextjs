@@ -48,7 +48,9 @@ export default async function EpisodesPage({ searchParams }: EpisodesPageProps) 
   if (error) {
     return (
       <section className="section">
-        <h1>Episodes</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          Episodes
+        </h1>
         <ErrorState message={error} />
       </section>
     );
@@ -57,7 +59,9 @@ export default async function EpisodesPage({ searchParams }: EpisodesPageProps) 
   if (!pageData || pageData.items.length === 0) {
     return (
       <section className="section">
-        <h1>Episodes</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          Episodes
+        </h1>
         <EmptyState message="No episodes matched your current filters." />
       </section>
     );
@@ -67,7 +71,9 @@ export default async function EpisodesPage({ searchParams }: EpisodesPageProps) 
 
   return (
     <section className="section">
-      <h1>Episodes</h1>
+      <h1 data-page-heading tabIndex={-1}>
+        Episodes
+      </h1>
       <EpisodeFilters
         key={`name:${filters.name ?? ""}|season:${filters.season ?? ""}`}
         name={filters.name ?? ""}

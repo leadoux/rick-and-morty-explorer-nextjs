@@ -10,7 +10,9 @@ export function LocationDetail({ location }: LocationDetailProps) {
   return (
     <article className="detail-card">
       <div className="detail-card__body">
-        <h1>{location.name}</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          {location.name}
+        </h1>
         <p className="muted">Type: {location.type || "Unknown"}</p>
         <FavoriteButton
           item={{

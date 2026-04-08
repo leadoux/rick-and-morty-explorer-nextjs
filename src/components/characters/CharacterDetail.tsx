@@ -13,7 +13,9 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={character.image} alt={character.name} className="detail-image" />
       <div className="detail-card__body">
-        <h1>{character.name}</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          {character.name}
+        </h1>
         <p className="muted">
           {character.status} - {character.species}
         </p>
