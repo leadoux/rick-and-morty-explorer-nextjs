@@ -267,14 +267,14 @@ a {
 .card {
   border: 1px solid var(--border);
   background: var(--surface);
-  border-radius: 0.75rem;
-  overflow: hidden;
+  border-radius: 1rem;
+  padding: 0.75rem;
 }
 
 .card__body {
-  padding: 0.55rem;
+  padding: 0.75rem 0.2rem 0.2rem;
   display: grid;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .character-image {
@@ -282,6 +282,7 @@ a {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: 0.95rem;
 }
 
 .pagination {
@@ -395,10 +396,30 @@ html[data-theme="dark"] .pagination .button--disabled {
 }
 
 .card-actions {
-  margin-top: 0.25rem;
+  margin-top: 0.4rem;
   display: flex;
-  gap: 0.3rem;
+  gap: 0.45rem;
   flex-wrap: wrap;
+}
+
+.card-actions .button {
+  border-radius: 1rem;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  border: 1px solid transparent;
+}
+
+.card-actions .button--primary {
+  background: #1f66cd;
+  border-color: #1f66cd;
+  color: #fff;
+}
+
+.card-actions .button:not(.button--primary) {
+  background: #c9d7ec;
+  border-color: #c9d7ec;
+  color: #19457c;
 }
 
 .error-text {

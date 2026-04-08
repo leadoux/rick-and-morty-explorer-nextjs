@@ -19,7 +19,7 @@ export function FavoriteButton({ item }: FavoriteButtonProps) {
       className={`button ${active ? "button--accent" : ""}`}
       onClick={() => toggleFavorite(item)}
     >
-      {hydrated ? (active ? "Favorited" : "Add Favorite") : "Favorite"}
+      {hydrated ? (active ? "Favorited" : "Favorite") : "Favorite"}
     </button>
   );
 }
