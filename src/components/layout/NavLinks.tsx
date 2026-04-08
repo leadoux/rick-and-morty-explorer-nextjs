@@ -17,16 +17,21 @@ export function NavLinks() {
   return (
     <nav aria-label="Main navigation">
       <ul className="nav-list">
-        {NAV_ITEMS.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className={`nav-link ${item.activePatterns.some((p) => pathname === p || pathname.startsWith(p + "/")) ? "nav-link--active" : ""}`}
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
+        {NAV_ITEMS.map((item) => {
+          const isActive = item.activePatterns.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+
+          return (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={`nav-link ${isActive ? "nav-link--active" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

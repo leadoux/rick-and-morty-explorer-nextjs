@@ -27,25 +27,36 @@ export function EpisodeFilters({ name, season }: EpisodeFiltersProps) {
   }, [debouncedSeason, season, updateFilter]);
 
   return (
-    <div className="filter-grid filter-grid--2">
-      <label className="field">
-        <span>Name</span>
-        <input
-          type="text"
-          value={nameInput}
-          onChange={(event) => setNameInput(event.target.value)}
-          placeholder="Search by episode name"
-        />
-      </label>
-      <label className="field">
-        <span>Season</span>
-        <input
-          type="text"
-          value={seasonInput}
-          onChange={(event) => setSeasonInput(event.target.value)}
-          placeholder="S01, S02..."
-        />
-      </label>
-    </div>
+    <fieldset className="filter-fieldset">
+      <legend className="sr-only">Episode filters</legend>
+      <div className="filter-grid filter-grid--2">
+        <label className="field">
+          <span>Name</span>
+          <input
+            type="text"
+            value={nameInput}
+            onChange={(event) => setNameInput(event.target.value)}
+            placeholder="Search by episode name"
+            aria-describedby="episode-name-hint"
+          />
+        </label>
+        <p id="episode-name-hint" className="sr-only">
+          Name filter uses short debounce while typing.
+        </p>
+        <label className="field">
+          <span>Season</span>
+          <input
+            type="text"
+            value={seasonInput}
+            onChange={(event) => setSeasonInput(event.target.value)}
+            placeholder="S01, S02..."
+            aria-describedby="episode-season-hint"
+          />
+        </label>
+        <p id="episode-season-hint" className="sr-only">
+          Season filter uses short debounce while typing.
+        </p>
+      </div>
+    </fieldset>
   );
 }

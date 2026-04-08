@@ -50,7 +50,9 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
   if (error) {
     return (
       <section className="section">
-        <h1>Characters</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          Characters
+        </h1>
         <ErrorState message={error} />
       </section>
     );
@@ -59,7 +61,9 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
   if (!pageData || pageData.items.length === 0) {
     return (
       <section className="section">
-        <h1>Characters</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          Characters
+        </h1>
         <EmptyState message="No characters matched your current filters." />
       </section>
     );
@@ -69,7 +73,9 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
 
   return (
     <section className="section">
-      <h1>Characters</h1>
+      <h1 data-page-heading tabIndex={-1}>
+        Characters
+      </h1>
       <CharacterFilters
         key={`name:${filters.name ?? ""}|status:${filters.status ?? ""}|species:${filters.species ?? ""}|gender:${filters.gender ?? ""}`}
         name={filters.name ?? ""}
@@ -77,7 +83,7 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
         species={filters.species ?? ""}
         gender={filters.gender ?? ""}
       />
-      <p className="muted">Showing {items.length} of {info.count} characters.</p>
+      <h2 className="section-heading">Character results ({info.count})</h2>
       <div className="card-grid">
         {items.map((character) => (
           <CharacterCard key={character.id} character={character} />

@@ -11,7 +11,9 @@ export function EpisodeDetail({ episode }: EpisodeDetailProps) {
   return (
     <article className="detail-card">
       <div className="detail-card__body">
-        <h1>{episode.name}</h1>
+        <h1 data-page-heading tabIndex={-1}>
+          {episode.name}
+        </h1>
         <p className="muted">{episode.episode}</p>
         <FavoriteButton
           item={{
