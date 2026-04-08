@@ -156,6 +156,14 @@ a {
   margin-bottom: 0.35rem;
 }
 
+.section-heading {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
 .filter-grid {
   margin-bottom: 0.9rem;
   display: grid;

@@ -77,7 +77,7 @@ export default async function CharactersPage({ searchParams }: CharactersPagePro
         species={filters.species ?? ""}
         gender={filters.gender ?? ""}
       />
-      <p className="muted">Showing {items.length} of {info.count} characters.</p>
+      <h2 className="section-heading">Character results ({info.count})</h2>
       <div className="card-grid">
         {items.map((character) => (
           <CharacterCard key={character.id} character={character} />
