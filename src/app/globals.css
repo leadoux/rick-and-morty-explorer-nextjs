@@ -160,6 +160,11 @@ a {
   padding: 0.45rem 0.65rem;
 }
 
+.search-hint {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+}
+
 .search-panel {
   position: absolute;
   left: 0;
@@ -182,6 +187,14 @@ a {
   list-style: none;
   display: grid;
   gap: 0.2rem;
+}
+
+.search-list li {
+  border-radius: 0.35rem;
+}
+
+.search-list .search-list__item--active {
+  background: var(--surface-muted);
 }
 
 .section h1 {
