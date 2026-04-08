@@ -140,6 +140,15 @@ a {
 .nav-link--active {
   color: var(--foreground);
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--foreground);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
 }
 
 .app-content {
