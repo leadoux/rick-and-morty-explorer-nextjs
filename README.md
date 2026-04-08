@@ -9,7 +9,7 @@ A Next.js (App Router) + TypeScript project that demonstrates:
 - UX polish (responsive layouts, loading/error/empty states, dark mode)
 - Testing quality with unit coverage and Cypress smoke scenarios
 
-> Project status: this repository is approximately **60% complete**.
+> Project status: this repository is approximately **80% complete**.
 
 Live app: [https://rm-nextjs.leadoux.dev](https://rm-nextjs.leadoux.dev)
 
